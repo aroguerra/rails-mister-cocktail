@@ -1,1 +1,4 @@
 <%= @cocktail.name %>
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+
+<%= link_to 'back to list', cocktails_url %>

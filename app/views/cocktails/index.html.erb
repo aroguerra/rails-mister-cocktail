@@ -1,18 +1,37 @@
 
 <%#= link_to "create cocktail", new_cocktail_path %>
+<div><h1>Cocktails!</h1></div>
 
-<h1>Mocktails!</h1>
 
 <%= link_to 'Create new cocktail', new_cocktail_path, class: 'btn btn-primary ' %>
 
+<div class="cards">
 <% @cocktails.each do |cktl| %>
-  <div>
-    <h3><%= cktl.name %></h3>
-    <ul>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cktl.photo %>)">
+    <%= link_to cktl.name, cktl %>
+    <div>
       <% cktl.doses.each do |dose| %>
-        <li><%= dose.ingredient.name %> (<%= dose.description %>) <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, dose, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <%= dose.ingredient.name %> (<%= dose.description %>) <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, dose, method: :delete, data: { confirm: 'Are you sure?' } %> <br>
       <% end %>
-    </ul>
-    <%= link_to 'Add ingredient (dose)', new_cocktail_dose_path(cktl) %>
+       <%= link_to 'Add ingredient (dose)', new_cocktail_dose_path(cktl) %>
+    </div>
   </div>
 <% end %>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+  <div class="card-category">Popular</div>
+  <div class="card-description">
+    <h2>Le Wagon Shanghai</h2>
+    <p>Very cool city, the best</p>
+  </div>
+  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+  <a class="card-link" href="#" ></a>
+</div>
+ -->
